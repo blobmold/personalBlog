@@ -5,6 +5,13 @@
   <%- include('layouts/nav') -%>
   <main>
     <h1>Register</h1>
+    <% if(errors != null && errors.length > 0) { %>
+      <ul class="gp-errors">
+        <% for(let i = 0; i < errors.length; i++ ) { %>
+          <li class="gp-error"><%= errors[i] %></li>
+        <% } %>
+      </ul>
+    <% } %>
     <form action="/users/register" method="POST">
       <div class="form-control">
         <label for="username">Username</label>

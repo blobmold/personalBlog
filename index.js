@@ -37,12 +37,9 @@ app.use('*', (req, res, next) => {
 // routing
 import homeController from "./controllers/home.js";
 import newPostController from "./controllers/newPost.js";
-import storePostController from "./controllers/storePost.js";
 import postController from "./controllers/post.js";
 import registerController from "./controllers/register.js";
 import loginController from "./controllers/login.js";
-import storeUserController from "./controllers/storeUser.js";
-import loginUserController from "./controllers/loginUser.js";
 import logoutController from "./controllers/logout.js";
 
 app.get("/", homeController);
@@ -51,6 +48,10 @@ app.get("/posts/:id", postController);
 app.get("/auth/register", redirectIfAuthenticatedMiddleware, registerController);
 app.get("/auth/login", redirectIfAuthenticatedMiddleware, loginController);
 app.get("/auth/logout", logoutController);
+
+import storeUserController from "./controllers/storeUser.js";
+import storePostController from "./controllers/storePost.js";
+import loginUserController from "./controllers/loginUser.js";
 
 app.post("/posts/store", validationMiddleware, authMiddleware, storePostController);
 app.post("/users/register", redirectIfAuthenticatedMiddleware, storeUserController);

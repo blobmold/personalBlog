@@ -69,3 +69,17 @@ button {
   width: 100%;
   height: 400px;
 }
+
+
+/* forms */
+.gp-errors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.gp-error {
+  background-color: #ffcece;
+  padding: 10px;
+  margin: 5px 0;
+  color: #e13333;
+}
