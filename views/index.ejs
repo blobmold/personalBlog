@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/head') -%>
+<body>
+  <%- include('layouts/nav') -%>
+  <main>
+    <h1>Homepage</h1>
+    <section class="gp-posts">
+      <% for(let i=0; i < blogpost.length; i++) { %>
+      <!-- Single article -->
+      <article class="gp-article" id="1" >
+        <h2><a href="#"><%= blogpost[i].title %></a></h2>
+        <p><%= blogpost[i].body %></p>
+        <p>Written by <a href="#"><%= blogpost[i].user %></a> on <%= blogpost[i].datePosted %></p>
+      </article>
+      <% } %>
+    </section>
+  </main>
+  <%- include('layouts/footer') -%>
+</body>
+</html>

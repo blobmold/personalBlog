@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/head') -%>
+<body>
+  <%- include('layouts/nav') -%>
+  <main>
+    <h1>Create a New Post</h1>
+    <form action="/posts/store" method="POST">
+      <div class="form-control">
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" placeholder="Title">  
+      </div>
+      <div class="form-control">
+        <label for="body">Body</label>
+        <textarea title="body" name="body" id="" cols="30" rows="10" placeholder="Body"></textarea>  
+      </div>
+      <!-- <div class="form-control">
+        <label for="image">Image</label>
+        <input type="file" placeholder="Image" >  
+      </div> -->
+      <button type="submit">Post</button>
+    </form>
+  </main>
+  <%- include('layouts/footer') -%>
+</body>
+</html>

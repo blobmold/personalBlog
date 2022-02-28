@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.gp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 50px;
+}
+
+.gp-logo {
+  margin: 0;
+}
+
+.gp-logo img {
+  height: 50px;
+  width: 50px;
+  vertical-align: top;
+}
+
+.gp-gn-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.gp-gn-list-item {
+  padding-left: 20px;
+}
+
+.gp-gn-anchor {
+  color: black;
+  text-decoration: none;
+}
+
+main {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.form-control {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 100px 1fr;
+}
+
+input:not([type='file']), textarea {
+  border: 1px solid black;
+}
+
+button {
+  padding: 15px 40px;
+  margin-top: 30px;
+}
