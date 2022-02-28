@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('layouts/head') -%>
+  <body>
+    <%- include('layouts/nav') -%>
+    <main>
+      <figure class="post-banner-container">
+        <img class="post-banner"  src="<%= blogpost.image %>" alt="">
+      </figure>
+      <article class="gp-article">
+        <h2><%= blogpost.title %></h2>
+        <p><%= blogpost.body %></p>
+        <p>Written by <a href="#"><%= blogpost.user %></a> on <%= blogpost.datePosted %></p>
+      </article>
+    </main>
+    <%- include('layouts/footer') -%>
+  </body>
+</html>
