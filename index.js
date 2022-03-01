@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import fileUpload from "express-fileupload";
 import expressSession from "express-session";
+import User from "./models/User.js";
 
 const app = express();
 
@@ -26,6 +27,12 @@ app.use(
         saveUninitialized: true,
     })
 );
+
+app.use(async (req, res, next) => {
+    let user = await User.findById(req.session.userId);
+    if(user) console.log(user.username)
+    next()
+})
 
 global.loggedIn = null;
 
