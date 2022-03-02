@@ -7,12 +7,13 @@ import User from "./models/User.js";
 
 const app = express();
 
-mongoose.connect("mongodb://localhost/newBlog");
+//Database
+mongoose.connect();
 
 app.set("view engine", "ejs");
 
 // middleware
-import validationMiddleware from "./middleware/validationMiddlware.js"
+import validationMiddleware from "./middleware/validationMiddlware.js";
 import redirectIfAuthenticatedMiddleware from "./middleware/redirectIfAuthenticatedMiddleware.js";
 import authMiddleware from "./middleware/authMiddleware.js";
 
@@ -28,18 +29,12 @@ app.use(
     })
 );
 
-app.use(async (req, res, next) => {
-    let user = await User.findById(req.session.userId);
-    if(user) console.log(user.username)
-    next()
-})
-
 global.loggedIn = null;
 
-app.use('*', (req, res, next) => {
+app.use("*", (req, res, next) => {
     loggedIn = req.session.userId;
     next();
-})
+});
 
 // routing
 import homeController from "./controllers/home.js";
@@ -48,6 +43,7 @@ import postController from "./controllers/post.js";
 import registerController from "./controllers/register.js";
 import loginController from "./controllers/login.js";
 import logoutController from "./controllers/logout.js";
+import forexController from "./controllers/forex.js";
 
 app.get("/", homeController);
 app.get("/posts/new", authMiddleware, newPostController);
@@ -55,6 +51,7 @@ app.get("/posts/:id", postController);
 app.get("/auth/register", redirectIfAuthenticatedMiddleware, registerController);
 app.get("/auth/login", redirectIfAuthenticatedMiddleware, loginController);
 app.get("/auth/logout", logoutController);
+app.get("/forex", forexController);
 
 import storeUserController from "./controllers/storeUser.js";
 import storePostController from "./controllers/storePost.js";
@@ -65,12 +62,12 @@ app.post("/users/register", redirectIfAuthenticatedMiddleware, storeUserControll
 app.post("/users/login", redirectIfAuthenticatedMiddleware, loginUserController);
 
 // 404
-app.use((req, res) => res.render('404'));
+app.use((req, res) => res.render("404"));
 
 // 500
 app.use((err, req, res, next) => {
     res.status(500);
-    res.render('500');
+    res.render("500");
 });
 
 const PORT = process.env.PORT || 3000;
