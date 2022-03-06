@@ -3,12 +3,11 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import fileUpload from "express-fileupload";
 import expressSession from "express-session";
-import User from "./models/User.js";
 
 const app = express();
 
 //Database
-mongoose.connect();
+mongoose.connect("");
 
 app.set("view engine", "ejs");
 
@@ -22,18 +21,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(
-    expressSession({
-        secret: "balroc is cool",
-        resave: true,
-        saveUninitialized: true,
-    })
+  expressSession({
+    secret: "balroc is cool",
+    resave: true,
+    saveUninitialized: true,
+  })
 );
 
 global.loggedIn = null;
 
 app.use("*", (req, res, next) => {
-    loggedIn = req.session.userId;
-    next();
+  loggedIn = req.session.userId;
+  next();
 });
 
 // routing
@@ -52,6 +51,11 @@ app.get("/auth/register", redirectIfAuthenticatedMiddleware, registerController)
 app.get("/auth/login", redirectIfAuthenticatedMiddleware, loginController);
 app.get("/auth/logout", logoutController);
 app.get("/forex", forexController);
+app.get("/forex/:currency", (req, res) => {
+  res.render("forexCode", {
+    currency: req.params.currency
+  });
+});
 
 import storeUserController from "./controllers/storeUser.js";
 import storePostController from "./controllers/storePost.js";
@@ -66,8 +70,8 @@ app.use((req, res) => res.render("404"));
 
 // 500
 app.use((err, req, res, next) => {
-    res.status(500);
-    res.render("500");
+  res.status(500);
+  res.render("500");
 });
 
 const PORT = process.env.PORT || 3000;
