@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('layouts/head') %>
-    <body>
-        <%- include('layouts/nav') %>
+  <%- include('layouts/head') %>
+  <body>
+    <%- include('layouts/nav') %>
 
-        <div class="table"></div>
+    <main>
+      <h1>Currency Exchange</h1>
+      <h2>API from <a href="https://nbg.gov.ge/" target="_blank">nbg.gov.ge</a></h2>
+      <div class="form-control forex-searchbar">
+        <label for="search">Search currency:</label>
+        <input type="text" id="search" placeholder="Search for the currency code" />
+      </div>
 
-        <script src="/js/currencyTable.js"></script>
+      <table id="forex-table"></table>
+    </main>
 
-        <%- include('layouts/footer') %>
-    </body>
+    <script src="/js/currencyTable.js"></script>
+
+    <%- include('layouts/footer') %>
+  </body>
 </html>

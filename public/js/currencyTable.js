@@ -4,20 +4,17 @@ async function getNbgAPI() {
   let date = nbgJson[0].date;
   let currencies = nbgJson[0].currencies;
   let currencyHeader = Object.keys(currencies[0]);
+  console.log(currencyHeader)
 
-  let tableParent = document.querySelector(".table");
   let dateEl = document.createElement("div");
-  let tableEl = document.createElement("table");
-  dateEl.className = "date";
-  tableEl.style.borderSpacing = "25px";
-  tableParent.before(dateEl);
-  tableParent.append(tableEl);
+  let tableEl = document.getElementById("forex-table");
+  dateEl.className = "forex-date";
+  tableEl.before(dateEl);
 
-  dateEl.textContent = new Date(date);
-  Promise.all([generateTableHead(tableEl, currencyHeader), generateTable(tableEl, currencies)]);
+  dateEl.textContent = "Date: " + new Date(date);
+  await generateTable(tableEl, currencies);
+  await generateTableHead(tableEl, currencyHeader);
 }
-
-getNbgAPI().catch(console.log);
 
 async function generateTableHead(table, currencies) {
   let thead = table.createTHead();
@@ -42,3 +39,18 @@ async function generateTable(table, data) {
     }
   }
 }
+
+getNbgAPI().then(() => {
+  let tableEl = document.getElementById("forex-table");
+  let searchEl = document.getElementById("search");
+  searchEl.addEventListener("input", (e) => {
+    for (let i = 1; i < tableEl.rows.length; i++) {
+      let currentRow = tableEl.rows[i];
+      let codeEl = tableEl.rows[i].cells[0];
+      let codeTxt = codeEl.textContent;
+      let input = e.target.value.toUpperCase();
+      // Check if the input is present in the first column
+      codeTxt.indexOf(input) > -1 ? (currentRow.hidden = false) : (currentRow.hidden = true);
+    }
+  });
+});

@@ -1,7 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Spline+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --global-font-family: Bai Jamjuree;
+  --global-red: #ea3724;
+  --global-black: #0F0F0F;
+  --global-white: #fff;
+}
+
+html {
+  height: -webkit-fill-available; /* https://twitter.com/bfgeek/status/1262465912025698304 */
+}
+
+html, body {
+  min-height: 100%;
+  min-height: -webkit-fill-available;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+main {
+  width: 700px;
+  margin: 0 auto;
+  min-height: 90vh;
+}
+
+table {
+  font-size: 0.75em;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 6px;
+}
+
+a,
+p,
+ul,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+span,
+button,
+td,
+th {
+  font-family: var(--global-font-family);
+}
+
+h1 {
+  font-size: 4em;
+}
+
+label {
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+}
+
+button {
+  padding: 15px 40px;
+  margin-top: 30px;
+  background: var(--global-red);
+  border: 0;
+  color: var(--global-white);
+  font-size: 0.7em;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ea3824d2;
 }
 
 .gp-header {
@@ -9,6 +88,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 0 50px;
+  height: 80px;
 }
 
 .gp-logo {
@@ -37,27 +117,10 @@ body {
   text-decoration: none;
 }
 
-main {
-  width: 700px;
-  margin: 0 auto;
-}
-
-.form-control {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 100px 1fr;
-  margin-top: 20px;
-}
-
-input:not([type='file']), textarea {
+input:not([type="file"]),
+textarea {
   border: 1px solid black;
-  font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
-}
-
-button {
-  padding: 15px 40px;
-  margin-top: 30px;
 }
 
 .post-banner-container {
@@ -70,8 +133,14 @@ button {
   height: 400px;
 }
 
+/* Form - Login - Logout */
 
-/* forms */
+.form-control {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+}
+
 .gp-errors {
   list-style: none;
   margin: 0;
@@ -82,4 +151,25 @@ button {
   padding: 10px;
   margin: 5px 0;
   color: #e13333;
+}
+
+/* Table - Forex */
+
+.forex-searchbar {
+  margin-top: 50px;
+}
+
+input#search {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* width: 100%; */
+}
+
+.forex-date {
+  margin-top: 50px;
+}
+
+#forex-table {
+  margin-top: 50px;
 }
