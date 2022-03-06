@@ -31,6 +31,12 @@ main {
 table {
   font-size: 0.75em;
   border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  background-color: var(--global-red);
+  color: white;
 }
 
 td,
