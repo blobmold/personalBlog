@@ -43,6 +43,7 @@ import registerController from "./controllers/register.js";
 import loginController from "./controllers/login.js";
 import logoutController from "./controllers/logout.js";
 import forexController from "./controllers/forex.js";
+import forexCurrencyController from './controllers/forexCurrency.js'
 
 app.get("/", homeController);
 app.get("/posts/new", authMiddleware, newPostController);
@@ -51,11 +52,7 @@ app.get("/auth/register", redirectIfAuthenticatedMiddleware, registerController)
 app.get("/auth/login", redirectIfAuthenticatedMiddleware, loginController);
 app.get("/auth/logout", logoutController);
 app.get("/forex", forexController);
-app.get("/forex/:currency", (req, res) => {
-  res.render("forexCode", {
-    currency: req.params.currency
-  });
-});
+app.get("/forex/:currency", forexCurrencyController);
 
 import storeUserController from "./controllers/storeUser.js";
 import storePostController from "./controllers/storePost.js";
