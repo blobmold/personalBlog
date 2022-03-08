@@ -7,14 +7,15 @@
   <nav class="gp-gn">
     <ul class="gp-gn-list">
       <li class="gp-gn-list-item"><a href="/" class="gp-gn-anchor">Home</a></li>
+      <li class="gp-gn-list-item"><a href="https://georgeparesishvili.com" target="_blank" class="gp-gn-anchor">Online Resume</a></li>
       <li class="gp-gn-list-item"><a href="/forex" class="gp-gn-anchor">Forex</a></li>
+
       <% if(loggedIn) { %>
       <li class="gp-gn-list-item"><a href="/posts/new" class="gp-gn-anchor">New Post</a></li>
+      <li class="gp-gn-list-item"><a href="/auth/register" class="gp-gn-anchor">Register</a></li>
       <li class="gp-gn-list-item"><a href="/auth/logout" class="gp-gn-anchor">Logout</a></li>
       <% } %>
       <% if(!loggedIn) { %>
-      <li class="gp-gn-list-item"><a href="/auth/login" class="gp-gn-anchor">Login</a></li>
-      <li class="gp-gn-list-item"><a href="/auth/register" class="gp-gn-anchor">Register</a></li>
       <% } %>
     </ul>
   </nav>
