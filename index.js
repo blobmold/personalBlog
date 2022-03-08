@@ -35,6 +35,10 @@ app.use("*", (req, res, next) => {
   next();
 });
 
+// Cron Job to update currency database
+import updateCurrencyDatabase from "./controllers/updateCurrencyDatabase.js";
+updateCurrencyDatabase();
+
 // routing
 import homeController from "./controllers/home.js";
 import newPostController from "./controllers/newPost.js";
@@ -43,7 +47,7 @@ import registerController from "./controllers/register.js";
 import loginController from "./controllers/login.js";
 import logoutController from "./controllers/logout.js";
 import forexController from "./controllers/forex.js";
-import forexCurrencyController from './controllers/forexCurrency.js'
+import forexCurrencyController from "./controllers/forexCurrency.js";
 
 app.get("/", homeController);
 app.get("/posts/new", authMiddleware, newPostController);
