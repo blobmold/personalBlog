@@ -7,6 +7,8 @@
   --global-white: #fff;
   --global-content-width: 700px;
   --global-content-padding: 0;
+  --global-form-control-grid-columns: 150px 1fr;
+  --header-margin: 0 50px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -17,6 +19,12 @@
 @media screen and (max-width: 730px) {
   :root {
     --global-content-width: 100%;
+    --global-form-control-grid-columns: 1fr;
+    --header-margin: 0 10px;
+  }
+
+  .gp-header {
+    font-size: 0.85em;
   }
 }
 html {
@@ -122,7 +130,7 @@ canvas {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 50px;
+  margin: var(--header-margin);
   height: 80px;
 }
 .gp-logo {
@@ -164,7 +172,7 @@ textarea {
 }
 .form-control {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: var(--global-form-control-grid-columns);
   align-items: center;
 }
 .gp-errors {
