@@ -7,7 +7,7 @@ import expressSession from "express-session";
 const app = express();
 
 //Database
-mongoose.connect("");
+mongoose.connect("mongodb+srv://GeorgeP:asdfasdf125@cluster0.97d7x.mongodb.net/test");
 
 app.set("view engine", "ejs");
 
@@ -52,7 +52,7 @@ import forexCurrencyController from "./controllers/forexCurrency.js";
 app.get("/", homeController);
 app.get("/posts/new", authMiddleware, newPostController);
 app.get("/posts/:id", postController);
-app.get("/auth/register", redirectIfAuthenticatedMiddleware, registerController);
+app.get("/auth/register", authMiddleware, registerController); // Only registered Users are allowed to register others
 app.get("/auth/login", redirectIfAuthenticatedMiddleware, loginController);
 app.get("/auth/logout", logoutController);
 app.get("/forex", forexController);
