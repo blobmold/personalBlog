@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Spline+Sans:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500;600&display=swap');
 :root {
   --global-font-family: 'Bai Jamjuree', sans-serif;
   --global-red: #ea3724;
@@ -191,4 +191,10 @@ input#search {
 }
 #forex-table {
   margin-top: 50px;
+}
+
+/* Articles */
+.gp-article-data {
+  font-size: 0.85em;
+  font-weight: 300;
 }
