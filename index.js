@@ -7,7 +7,7 @@ import expressSession from "express-session";
 const app = express();
 
 //Database
-mongoose.connect("mongodb+srv://GeorgeP:asdfasdf125@cluster0.97d7x.mongodb.net/test");
+mongoose.connect("");
 
 app.set("view engine", "ejs");
 
@@ -41,6 +41,7 @@ updateCurrencyDatabase();
 
 // routing
 import homeController from "./controllers/home.js";
+import aboutController from "./controllers/about.js";
 import newPostController from "./controllers/newPost.js";
 import postController from "./controllers/post.js";
 import registerController from "./controllers/register.js";
@@ -50,6 +51,7 @@ import forexController from "./controllers/forex.js";
 import forexCurrencyController from "./controllers/forexCurrency.js";
 
 app.get("/", homeController);
+app.get('/about', aboutController)
 app.get("/posts/new", authMiddleware, newPostController);
 app.get("/posts/:id", postController);
 app.get("/auth/register", authMiddleware, registerController); // Only registered Users are allowed to register others
