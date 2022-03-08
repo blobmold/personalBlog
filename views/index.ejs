@@ -11,7 +11,9 @@
       <article class="gp-article" id="1" >
         <h2><a href="/posts/<%= blogpost[i]._id %>"><%= blogpost[i].title %></a></h2>
         <p><%= blogpost[i].body %></p>
-        <p>Written by <a href="#"><%= blogpost[i].user %></a> on <%= blogpost[i].datePosted.toDateString() %></p>
+        <div class="gp-article-data">
+          <p>Written by <a href="#"><%= blogpost[i].user %></a> on <%= blogpost[i].datePosted.toDateString() %></p>
+        </div>
       </article>
       <% } %>
     </section>
