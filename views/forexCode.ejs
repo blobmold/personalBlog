@@ -7,46 +7,11 @@
     <main>
       <a href="/forex"><- Go Back</a>
       <h1><%- currency %></h1>
-      <canvas id="currHistCanv"></canvas>
+      <canvas id="currHistCanv">
+        <div id="statistics" data-dates='<%-JSON.stringify(dates)%>' data-rates="<%-JSON.stringify(rates)%>"></div>
+      </canvas>
       <!-- <script src="/js/currencyChart.js"></script> -->
-      <script>
-            fetch("https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/en/json")
-              .then((response) => response.json())
-              .then((obj) => obj[0].date);
-
-            let data = {
-              labels: <%-JSON.stringify(dates)%>,
-              datasets: [
-                {
-                  label: "# of Votes",
-                  data: <%-JSON.stringify(rates)%>,
-                  backgroundColor: ["ea3724"],
-                  borderColor: ["ea3724"],
-                  borderWidth: 1,
-                },
-              ],
-            };
-
-            let options = {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                },
-              },
-              plugins: {
-                legend: {
-                  display: false,
-                }
-              }
-            };
-
-            const ctx = document.getElementById("currHistCanv").getContext("2d");
-            const myChart = new Chart(ctx, {
-              type: "line",
-              data: data,
-              options: options,
-            });
-      </script>
+      <script src="/js/currencyChart.js"></script>
     </main>
     <%- include('layouts/footer') -%>
   </body>
