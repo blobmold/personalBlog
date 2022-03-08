@@ -4,7 +4,8 @@ export default async (req, res) => {
   let data = await Forex.find({});
   let map = new Map();
   for(let obj of data) {
-    let key = (obj.date).getFullYear() + "-" + (obj.date).getMonth() + "-" + (obj.date).getDate();
+    // Key is a formatted date yyyy-mm-dd
+    let key = obj.date.getFullYear() + "-" + obj.date.getMonth() + "-" + obj.date.getDate();
     let value;
     let pageName = req.params.currency;
     for(let currency of obj.currencies) {
@@ -15,7 +16,6 @@ export default async (req, res) => {
   }
   let dates = Array.from(map.keys());
   let rates = Array.from(map.values());
-  console.log(dates)
   res.render("forexCode", {
     currency: req.params.currency,
     dates: dates,
