@@ -87,7 +87,7 @@ async function getNbgAPI() {
   let nbgResponse = await fetch("https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/en/json");
   let nbgJson = await nbgResponse.json();
   let dateOjb = nbgJson[0].date;
-  let date = new Date(dateOjb);
+  let date = new Date(dateOjb).toLocaleDateString();
   let currencies = nbgJson[0].currencies;
   let currencyHeader = Object.keys(currencies[0]);
 
