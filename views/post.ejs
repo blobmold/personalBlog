@@ -10,7 +10,7 @@
       <article class="gp-article">
         <h2><%= blogpost.title %></h2>
         <p><%= blogpost.body %></p>
-        <p>Written by <a href="#"><%= blogpost.user %></a> on <%= blogpost.datePosted %></p>
+        <p>Written by <a href="#"><%= blogpost.user %></a> on <%= blogpost.datePosted.toDateString() %></p>
       </article>
     </main>
     <%- include('layouts/footer') -%>
