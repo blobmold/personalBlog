@@ -14,6 +14,12 @@ function updateCurrencyDatabase() {
     let data = await nbgResponse.json();
     let date = data[0].date;
 
+    let obj = await Forex.findOne({ date });
+    // If object does not exist then create a document
+    if (!obj) {
+      await Forex.create(data[0]);
+    }
+
     const logDir = path.join(__dirname, "logs");
 
     try {
@@ -25,11 +31,6 @@ function updateCurrencyDatabase() {
     const reportPath = path.join(logDir, "currencyReport.txt");
 
     await fs.promises.appendFile(reportPath, `${new Date(Date.now()).toUTCString()}: Success. Data is now for ${new Date(date).toUTCString()} \n`);
-
-    Forex.findOne({ date }, (err, obj) => {
-      // If object does not exist then create a document
-      if (!obj) Forex.create(data[0]);
-    });
   });
 }
 
