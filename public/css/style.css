@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500;600&display=swap');
 :root {
+  color-scheme: light dark;
   --global-font-family: 'Bai Jamjuree', sans-serif;
   --global-red: #ea3724;
   --global-red-darker: #b32b1c;
-  --global-black: #0f0f0f;
-  --global-white: #fff;
   --global-content-width: 700px;
   --global-content-padding: 0;
   --global-form-control-grid-columns: 150px 1fr;
   --header-margin: 0 50px;
+  --article-banner-height: 400px
 }
 
 @media screen and (max-width: 1024px) {
   :root {
     --global-content-padding: 0 15px 0 15px;
+    --article-banner-height: 300px;
   }
 }
 @media screen and (max-width: 730px) {
@@ -21,6 +22,7 @@
     --global-content-width: 100%;
     --global-form-control-grid-columns: 1fr;
     --header-margin: 0 10px;
+    --article-banner-height: 200px;
   }
 
   .gp-header {
@@ -42,6 +44,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--global-background-color);
 }
 main {
   width: var(--global-content-width);
@@ -60,7 +63,7 @@ thead {
   color: white;
 }
 tbody tr:hover {
-  background-color:rgb(235, 235, 235);
+  background-color: var(--table-background-color);
 }
 td,
 th {
@@ -83,6 +86,7 @@ td,
 th,
 ul {
   font-family: var(--global-font-family);
+  color: var(--global-font-color);
 }
 h1 {
   font-size: 3.5em;
@@ -112,7 +116,7 @@ button {
   margin-top: 30px;
   background: var(--global-red);
   border: 0;
-  color: var(--global-white);
+  color: var(--global-font-color);
   font-size: 0.7em;
   transition: 0.1s ease-in-out;
   cursor: pointer;
@@ -151,7 +155,7 @@ canvas {
   padding-left: 20px;
 }
 a.gp-gn-anchor {
-  color: black;
+  color: var(--global-font-color);
   text-decoration: none;
 }
 a.gp-gn-anchor:hover{ 
@@ -168,7 +172,7 @@ textarea {
 .post-banner {
   object-fit: cover;
   width: 100%;
-  height: 400px;
+  height: var(--article-banner-height)
 }
 .form-control {
   display: grid;
