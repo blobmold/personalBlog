@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 function updateCurrencyDatabase() {
-  schedule.scheduleJob("* 12 * * *", async function () {
+  schedule.scheduleJob("0 */9 * * *", async function () {
     let nbgResponse = await fetch("https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/en/json");
     let data = await nbgResponse.json();
     let date = data[0].date;
